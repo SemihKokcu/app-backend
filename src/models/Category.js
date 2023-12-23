@@ -1,7 +1,6 @@
 const mongoose = require('../middleware/mongoMiddlware');
 
-
-const { Schema } = mongoose;
+const Schema = mongoose.Schema;
 
 const contentSchema = new Schema({
   name: { type: String, required: true },

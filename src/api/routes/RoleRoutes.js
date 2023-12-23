@@ -12,6 +12,6 @@ router.get('/get/:roleId', RoleController.getRole);
 
 router.get('/getAll', RoleController.getAllRoles);
 
-router.get('/getAllPaginated/paginated', RoleController.getAllPaginatedRoles);
+router.get('/getAllPaginated', RoleController.getAllPaginatedRoles);
 
 module.exports = router;

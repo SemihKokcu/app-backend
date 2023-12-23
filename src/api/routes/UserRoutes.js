@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 const userController = require('../controllers/UserController'); 
 const { fileFilter, fileStorage } = require('../../utils/multer/imageSettings');
-const multer = require('multer');
 const {userValidationRules}  = require('./validators/validationRules');
+
+
 const validate  = require('../../middleware/ValidatorMiddleWare');
 router.post(
   '/add',

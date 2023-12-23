@@ -28,7 +28,6 @@ const claimValidationRules = [
 
 const categoryValidationRules = [
   body('name').trim().notEmpty().withMessage('Name is required').isString().withMessage('Name must be a string'),
-  body('products').optional().isMongoId().withMessage('Products must be a valid MongoDB ObjectId'),
 ];
 module.exports = { 
   userValidationRules,
