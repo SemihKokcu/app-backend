@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const ClaimController = require('../api/controllers/ClaimsController');
+const ClaimController = require('../controllers/ClaimsController');
 
 router.post('/add', ClaimController.addClaim);
 

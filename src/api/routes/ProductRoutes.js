@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const multer = require("multer");
-const { fileFilter, fileStorage } = require("../utils/multer/imageSettings");
-const productController = require("../api/controllers/ProductController");
-const { authMiddleware } = require("../middleware/AuthMiddleware");
+const { fileFilter, fileStorage } = require("../../utils/multer/imageSettings");
+const productController = require('../controllers/ProductController');
+const { authMiddleware } = require("../../middleware/AuthMiddleware");
 const {
   create_product,
   update_product,
   delete_product,
-} = require("../common/ClaimsNames");
+} = require("./claims/ClaimsNames");
 
 router.post(
   "/add",

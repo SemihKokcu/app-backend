@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const RoleController = require('../api//controllers/RolesController');
+const RoleController = require('../controllers/RolesController');
 
 router.post('/add', RoleController.addRole);
 

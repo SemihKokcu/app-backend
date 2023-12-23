@@ -5,11 +5,11 @@ const mongoose = require('mongoose');
 const { errorHandler } = require('./src/utils/errors/ErrorHandler');
 const dotenv = require('dotenv');
 
-const authRoutes = require('./src/routes/AuthRoutes')
-const userRoutes = require('./src/routes/UserRoutes')
-const productRoutes = require('./src/routes/ProductRoutes')
-const roleRoutes = require('./src/routes/RoleRoutes')
-const claimRoutes = require('./src/routes/ClaimRoutes')
+const authRoutes = require('./src/api/routes/AuthRoutes')
+const userRoutes = require('./src/api/routes/UserRoutes')
+const productRoutes = require('./src/api/routes/ProductRoutes')
+const roleRoutes = require('./src/api/routes/RoleRoutes')
+const claimRoutes = require('./src/api/routes/ClaimRoutes')
 
 dotenv.config();
 const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';

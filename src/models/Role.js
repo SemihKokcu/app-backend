@@ -1,4 +1,4 @@
-const mongoose = require('../middleware/mongoMiddlware');
+const mongoose = require('../middleware/MongoMiddlware');
 
 const Schema = mongoose.Schema;
 
