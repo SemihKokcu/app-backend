@@ -41,7 +41,12 @@ const addressValidationRules = [
   body('postalCode').notEmpty().withMessage('Postal code cannot be empty'),
 ];
 
-
+const projectValidationRules = [
+  body('name').trim().notEmpty().withMessage('Name is required'),
+  body('descp').notEmpty().trim().withMessage('Description is required'),
+  body('primaryImgUrl').optional().isURL().withMessage('Invalid URL for primaryImgUrl'),
+  body('status').optional().isString().withMessage('Status must be a boolean'),
+];
 
 
 module.exports = { 
@@ -49,5 +54,6 @@ module.exports = {
   roleValidationRules,
   claimValidationRules,
   categoryValidationRules,
-  addressValidationRules
+  addressValidationRules,
+  projectValidationRules
 };

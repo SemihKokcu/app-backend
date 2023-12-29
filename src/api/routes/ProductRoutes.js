@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const multer = require("multer");
 const { fileFilter, fileStorage } = require("../../utils/multer/imageSettings");
-const productController = require('../controllers/ProductController');
+const productController = require("../controllers/ProductController");
 const { authMiddleware } = require("../../middleware/AuthMiddleware");
 const {
   create_product,
@@ -10,10 +10,11 @@ const {
   delete_product,
 } = require("./claims/ClaimsNames");
 
+router.use( multer({ storage: fileStorage, fileFilter: fileFilter }).array("images"))
+
 router.post(
   "/add",
   authMiddleware([`${create_product}`]),
-  multer({ storage: fileStorage, fileFilter: fileFilter }).array("images"),
   productController.createProduct
 );
 
