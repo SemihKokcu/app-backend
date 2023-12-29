@@ -29,9 +29,25 @@ const claimValidationRules = [
 const categoryValidationRules = [
   body('name').trim().notEmpty().withMessage('Name is required').isString().withMessage('Name must be a string'),
 ];
+
+
+const addressValidationRules = [
+  body('userId').isMongoId().withMessage('Invalid userId'),
+  body('buildingNumber').notEmpty().withMessage('Building number cannot be empty'),
+  body('doorNumber').notEmpty().withMessage('Door number cannot be empty'),
+  body('address').notEmpty().withMessage('Address cannot be empty'),
+  body('city').notEmpty().withMessage('City cannot be empty'),
+  body('country').notEmpty().withMessage('Country cannot be empty'),
+  body('postalCode').notEmpty().withMessage('Postal code cannot be empty'),
+];
+
+
+
+
 module.exports = { 
   userValidationRules,
   roleValidationRules,
   claimValidationRules,
   categoryValidationRules,
+  addressValidationRules
 };
