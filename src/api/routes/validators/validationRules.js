@@ -74,6 +74,12 @@ const teamValidationRules = [
   body('position').notEmpty().trim().withMessage('Position is required'),
   validateImageFile('imageUrl', validImageExtensions),
 ];
+
+const commentValidationRules = [
+  body('name').trim().notEmpty().withMessage('Name is required'),
+  body('message').notEmpty().trim().withMessage('Message is required'),
+  body('email').optional().isEmail().withMessage('Invalid email address'),
+];
 module.exports = { 
   userValidationRules,
   roleValidationRules,
@@ -83,5 +89,6 @@ module.exports = {
   projectValidationRules,
   aboutUsValidationRules,
   bannerValidationRules,
-  teamValidationRules
+  teamValidationRules,
+  commentValidationRules
 };

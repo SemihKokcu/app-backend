@@ -34,6 +34,9 @@ const create_team = "create_team";
 const update_team = "update_team";
 const delete_team = "delete_team";
 
+const create_comment = "create_comment";
+const update_comment = "update_comment";
+const delete_comment = "delete_comment";
 module.exports = {
   create_product,
   update_product,
@@ -62,4 +65,7 @@ module.exports = {
   create_user,
   update_user,
   delete_user,
+  create_comment,
+  update_comment,
+  delete_comment,
 };
