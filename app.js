@@ -13,6 +13,7 @@ const claimRoutes = require('./src/api/routes/ClaimRoutes')
 const categoryRoutes = require('./src/api/routes/CategoryRoutes')
 const addressRoutes = require('./src/api/routes/AddressRoutes')
 const projectRoutes = require('./src/api/routes/ProjectRoutes')
+const aboutUsRoutes = require('./src/api/routes/AboutUsRoutes')
 
 dotenv.config();
 const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev';
@@ -38,6 +39,7 @@ app.use('/api/claims',claimRoutes)
 app.use('/api/categories',categoryRoutes)
 app.use('/api/address',addressRoutes)
 app.use('/api/projects',projectRoutes)
+app.use('/api/aboutus',aboutUsRoutes)
 
 app.use(errorHandler);
 

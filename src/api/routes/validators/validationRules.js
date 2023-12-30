@@ -48,12 +48,25 @@ const projectValidationRules = [
   body('status').optional().isString().withMessage('Status must be a boolean'),
 ];
 
-
+const aboutUsValidationRules = [
+  body('title').trim().notEmpty().withMessage('Title is required'),
+  body('description').notEmpty().withMessage('Description is required'),
+  body('officalAddress').notEmpty().withMessage('Official Address is required'),
+  body('phoneNumber').optional(),
+  body('facebookUrl').optional().isURL().withMessage('Invalid URL for Facebook'),
+  body('instagramUrl').optional().isURL().withMessage('Invalid URL for Instagram'),
+  body('youtubeUrl').optional().isURL().withMessage('Invalid URL for YouTube'),
+  body('linkedInUrl').optional().isURL().withMessage('Invalid URL for LinkedIn'),
+  body('isActive').optional().isBoolean().withMessage('Status must be a boolean'),
+  body('steps.*').optional().isString().withMessage('Each step must be a string'),
+  body('email').notEmpty().isEmail().withMessage('Invalid email address'),
+];
 module.exports = { 
   userValidationRules,
   roleValidationRules,
   claimValidationRules,
   categoryValidationRules,
   addressValidationRules,
-  projectValidationRules
+  projectValidationRules,
+  aboutUsValidationRules
 };

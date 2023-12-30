@@ -22,6 +22,10 @@ const create_project = "create_project";
 const update_project = "update_project";
 const delete_project = "delete_project";
 
+const create_aboutUs = "create_aboutUs";
+const update_aboutUs = "update_aboutUs";
+const delete_aboutUs = "delete_aboutUs";
+
 module.exports = {
   create_product,
   update_product,
@@ -29,4 +33,7 @@ module.exports = {
   create_project,
   update_project,
   delete_project,
+  create_aboutUs,
+  update_aboutUs,
+  delete_aboutUs,
 };
