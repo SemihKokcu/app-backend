@@ -61,6 +61,13 @@ const aboutUsValidationRules = [
   body('steps.*').optional().isString().withMessage('Each step must be a string'),
   body('email').notEmpty().isEmail().withMessage('Invalid email address'),
 ];
+
+const bannerValidationRules = [
+  body('name').trim().notEmpty().withMessage('Name is required'),
+  body('description').notEmpty().trim().withMessage('Description is required'),
+  body('isActive').optional().isBoolean().withMessage('Status must be a boolean'),
+  validateImageFile('imageUrl', validImageExtensions),
+];
 module.exports = { 
   userValidationRules,
   roleValidationRules,
@@ -68,5 +75,6 @@ module.exports = {
   categoryValidationRules,
   addressValidationRules,
   projectValidationRules,
-  aboutUsValidationRules
+  aboutUsValidationRules,
+  bannerValidationRules
 };

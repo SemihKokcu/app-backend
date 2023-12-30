@@ -26,6 +26,10 @@ const create_aboutUs = "create_aboutUs";
 const update_aboutUs = "update_aboutUs";
 const delete_aboutUs = "delete_aboutUs";
 
+const create_banner = "create_banner";
+const update_banner = "update_banner";
+const delete_banner = "delete_banner";
+
 module.exports = {
   create_product,
   update_product,
@@ -36,4 +40,7 @@ module.exports = {
   create_aboutUs,
   update_aboutUs,
   delete_aboutUs,
+  create_banner,
+  update_banner,
+  delete_banner,
 };

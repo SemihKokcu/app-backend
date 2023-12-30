@@ -18,8 +18,6 @@ router.post(
 router.put(
   '/update/:id',
   multer({ storage: fileStorage, fileFilter: fileFilter }).single('image'),
-  userValidationRules,
-  validate,
   userController.update
 );
 
