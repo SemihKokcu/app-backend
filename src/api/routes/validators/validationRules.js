@@ -68,6 +68,12 @@ const bannerValidationRules = [
   body('isActive').optional().isBoolean().withMessage('Status must be a boolean'),
   validateImageFile('imageUrl', validImageExtensions),
 ];
+
+const teamValidationRules = [
+  body('name').trim().notEmpty().withMessage('Name is required'),
+  body('position').notEmpty().trim().withMessage('Position is required'),
+  validateImageFile('imageUrl', validImageExtensions),
+];
 module.exports = { 
   userValidationRules,
   roleValidationRules,
@@ -76,5 +82,6 @@ module.exports = {
   addressValidationRules,
   projectValidationRules,
   aboutUsValidationRules,
-  bannerValidationRules
+  bannerValidationRules,
+  teamValidationRules
 };

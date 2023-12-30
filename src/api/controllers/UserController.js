@@ -1,7 +1,7 @@
 const userService = require('../../services/UserService');
 
 const userController = {
-  add: async (req, res) => {
+  add: async (req, res,next) => {
     try {
       const newUser = await userService.add(req);
       res.status(201).json(newUser);
@@ -10,7 +10,7 @@ const userController = {
     }
   },
 
-  update: async (req, res) => {
+  update: async (req, res,next) => {
     try {
       const userId = req.params.id;
       const updatedUser = await userService.update(userId, req.body);
@@ -20,7 +20,7 @@ const userController = {
     }
   },
 
-  delete: async (req, res) => {
+  delete: async (req, res,next) => {
     try {
       const userId = req.params.id;
       const deletedUser = await userService.delete(userId);
@@ -30,7 +30,7 @@ const userController = {
     }
   },
 
-  get: async (req, res) => {
+  get: async (req, res,next) => {
     try {
       const userId = req.params.id;
       const user = await userService.get(userId);
@@ -40,7 +40,7 @@ const userController = {
     }
   },
 
-  getAll: async (req, res) => {
+  getAll: async (req, res,next) => {
     try {
       const users = await userService.getAll();
       res.json(users);
@@ -49,7 +49,7 @@ const userController = {
     }
   },
 
-  getAllPaginated: async (req, res) => {
+  getAllPaginated: async (req, res,next) => {
     try {
       const { page = 1, limit = 10 } = req.query;
       const results = await userService.getAllPaginated(page, limit);

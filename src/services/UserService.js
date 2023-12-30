@@ -49,6 +49,7 @@ const UserService = {
       if (!deletedUser) {
         throw new Error('User not found');
       }
+      deleteImage(deletedUser.profileImage)
       return deletedUser;
     } catch (error) {
       throw error;

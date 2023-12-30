@@ -30,6 +30,10 @@ const create_banner = "create_banner";
 const update_banner = "update_banner";
 const delete_banner = "delete_banner";
 
+const create_team = "create_team";
+const update_team = "update_team";
+const delete_team = "delete_team";
+
 module.exports = {
   create_product,
   update_product,
@@ -43,4 +47,19 @@ module.exports = {
   create_banner,
   update_banner,
   delete_banner,
+  create_team,
+  update_team,
+  delete_team,
+  create_category,
+  update_category,
+  delete_category,
+  create_address,
+  update_address,
+  delete_address,
+  create_role,
+  update_role,
+  delete_role,
+  create_user,
+  update_user,
+  delete_user,
 };
