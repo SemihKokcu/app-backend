@@ -7,7 +7,7 @@ const contentSchema = new Schema({
   products: { type: Schema.Types.ObjectId, ref: 'Product', required: false },
 },{ timestamps: true });
 
-const category = mongoose.model('Categories', contentSchema);
+const category = mongoose.model('categories', contentSchema);
 
 
 

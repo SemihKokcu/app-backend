@@ -14,20 +14,19 @@ router.use( multer({ storage: fileStorage, fileFilter: fileFilter }).array("imag
 
 router.post(
   "/add",
-  authMiddleware([`${create_product}`]),
+  // authMiddleware([`${create_product}`]),
   productController.createProduct
 );
 
 router.put(
   "/update/:id",
-  authMiddleware([`${update_product}`]),
-  multer({ storage: fileStorage, fileFilter: fileFilter }).array("images"),
+  // authMiddleware([`${update_product}`]),
   productController.updateProduct
 );
 
 router.delete(
   "/delete/:id",
-  authMiddleware([`${delete_product}`]),
+  // authMiddleware([`${delete_product}`]),
   productController.deleteProduct
 );
 

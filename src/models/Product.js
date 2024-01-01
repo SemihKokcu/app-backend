@@ -8,7 +8,7 @@ const contentSchema = new Schema({
   descp: { type: String, required: true },
   price: { type: Number, required: false },
   stock: { type: Number, required: false },
-  isActive : { type: Boolean, required: false,default: true },
+  isActive : { type: Boolean, required: true},
   imageUrls: { type: [String], required: true },
   categoryId: { type: Schema.Types.ObjectId, ref: 'categories' },
   creator: {

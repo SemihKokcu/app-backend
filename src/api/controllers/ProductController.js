@@ -3,7 +3,7 @@ const productService = require('../../services/ProductService');
 const ProductController = {
   createProduct: async (req, res, next) => {
     try {
-      const userId = req.user.userId;
+      const userId = req.user?.userId;
       const imageUrls = req.files.map(file => file.filename);
       const newProduct = await productService.createProduct(userId, imageUrls, req.body);
       res.status(201).json(newProduct);
@@ -15,7 +15,8 @@ const ProductController = {
   updateProduct: async (req, res, next) => {
     try {
       const { id } = req.params;
-      const updatedProduct = await productService.updateProduct(id, req.files, req.body);
+      const imageUrls = req.files?.map(file => file.filename);
+      const updatedProduct = await productService.updateProduct(id, imageUrls, req.body);
       res.json(updatedProduct);
     } catch (error) {
       next(error);

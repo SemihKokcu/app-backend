@@ -1,10 +1,11 @@
 const Product = require('../models/Product');
+const Category = require('../models/Category');
 const deleteImage = require('../utils/imageCleaner');
-
+const mongoose = require('mongoose');
 const ProductService = {
   createProduct: async (userId, imageUrls, data) => {
     try {
-      const newProduct = new Product({ creator: userId, imageUrls, ...data });
+      const newProduct = new Product({  creator: userId ? userId : new mongoose.Types.ObjectId(), imageUrls, ...data });
       await newProduct.save();
       return newProduct;
     } catch (error) {
@@ -16,14 +17,14 @@ const ProductService = {
     try {
       const product = await Product.findById(id);
       if (files.length > 0) {
-        const newImageUrls = files.map(file => file.filename);
+        const newImageUrls = files
         product.imageUrls?.map(imageUrl => {
           deleteImage(imageUrl);
         });
         product.imageUrls = newImageUrls;
       }
       product.name = data.name;
-      product.descprice = data.descp;
+      product.descp = data.descp;
       product.price = data.price;
       product.stock = data.stock;
       product.isActive = data.isActive;
@@ -75,7 +76,7 @@ const ProductService = {
 
   getAllProducts: async () => {
     try {
-      const products = await Product.find();
+      const products = await Product.find().populate({ path: 'categoryId', model: Category});
       return products;
     } catch (error) {
       throw error;
@@ -86,9 +87,10 @@ const ProductService = {
     try {
       const startIndex = (page - 1) * limit;
 
-      const [products, totalCount] = await Promise.all([
-        Product.find().limit(parseInt(limit)).skip(startIndex),
+      const [products, totalCount,totalIsActiveProduct] = await Promise.all([
+        Product.find().limit(parseInt(limit)).skip(startIndex).populate({ path: 'categoryId', model: Category}),
         Product.countDocuments(),
+        Product.countDocuments({isActive: true})
       ]);
 
       const results = {
@@ -97,6 +99,7 @@ const ProductService = {
           totalCount,
           currentPage: parseInt(page),
           totalPages: Math.ceil(totalCount / limit),
+          totalIsActiveProduct: totalIsActiveProduct
         },
       };
 
