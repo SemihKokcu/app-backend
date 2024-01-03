@@ -3,7 +3,7 @@ const ProjectService = require('../../services/ProjectService');
 const ProjectController = {
   createProject: async (req, res, next) => {
     try {
-        const userId = req.user.userId;
+        const userId = req.user?.userId;
         const imageUrls = req.files.map(file => file.filename);
       const newProject = await ProjectService.createProject(userId, imageUrls,req.body);
       res.status(201).json(newProject);

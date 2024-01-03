@@ -12,7 +12,7 @@ router.use(multer({ storage: fileStorage, fileFilter: fileFilter }).array('image
 
 router.post(
   '/add',
-  authMiddleware([`${create_project}`]), 
+  // authMiddleware([`${create_project}`]), 
   projectValidationRules,
   validate,
   projectController.createProject
@@ -20,7 +20,7 @@ router.post(
 
 router.put(
   '/update/:projectId',
-  authMiddleware([`${update_project}`]),
+  // authMiddleware([`${update_project}`]),
   projectValidationRules,
   validate,
   projectController.updateProject
@@ -28,7 +28,7 @@ router.put(
 
 router.delete(
   '/delete/:projectId',
-  authMiddleware([`${delete_project}`]),
+  // authMiddleware([`${delete_project}`]),
   projectController.deleteProject
 );
 

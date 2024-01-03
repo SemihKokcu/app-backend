@@ -1,10 +1,10 @@
 const Project = require('../models/Project');
 const deleteImage = require('../utils/imageCleaner');
-
+const mongoose = require('mongoose');
 const ProjectService = {
   createProject: async (userId, imageUrls, data) => {
     try {
-      const newProject = new Project({ creator:userId, imageUrls, ...data });
+      const newProject = new Project( {  creator: userId ? userId : new mongoose.Types.ObjectId(), imageUrls, ...data });
       await newProject.save();
       return newProject;
     } catch (error) {
@@ -86,9 +86,10 @@ const ProjectService = {
     try {
       const startIndex = (page - 1) * limit;
 
-      const [projects, totalCount] = await Promise.all([
+      const [projects, totalCount,totalCountCompletedProject] = await Promise.all([
         Project.find().limit(parseInt(limit)).skip(startIndex),
         Project.countDocuments(),
+        Project.countDocuments({status:'Tamamlandı'})
       ]);
 
       const results = {
@@ -97,6 +98,7 @@ const ProjectService = {
           totalCount,
           currentPage: parseInt(page),
           totalPages: Math.ceil(totalCount / limit),
+          totalCountCompletedProject
         },
       };
 

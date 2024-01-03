@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const projectStatusEnum = ['Devam Ediyor', 'Tamamlandı'];
+
 const projectSchema = new Schema(
   {
     name: {
@@ -19,10 +21,10 @@ const projectSchema = new Schema(
       type: Date,
     },
     creator: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
-        required: true,
-      },
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+      required: true,
+    },
     author: {
       type: String,
     },
@@ -31,6 +33,7 @@ const projectSchema = new Schema(
     },
     status: {
       type: String,
+      enum: projectStatusEnum,
     },
   },
   { timestamps: true }
