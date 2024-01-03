@@ -53,13 +53,12 @@ const aboutUsValidationRules = [
   body('description').notEmpty().withMessage('Description is required'),
   body('officalAddress').notEmpty().withMessage('Official Address is required'),
   body('phoneNumber').optional(),
-  body('facebookUrl').optional().isURL().withMessage('Invalid URL for Facebook'),
-  body('instagramUrl').optional().isURL().withMessage('Invalid URL for Instagram'),
-  body('youtubeUrl').optional().isURL().withMessage('Invalid URL for YouTube'),
-  body('linkedInUrl').optional().isURL().withMessage('Invalid URL for LinkedIn'),
-  body('isActive').optional().isBoolean().withMessage('Status must be a boolean'),
+  body('isActive').isBoolean().withMessage('Status must be a boolean'),
   body('steps.*').optional().isString().withMessage('Each step must be a string'),
   body('email').notEmpty().isEmail().withMessage('Invalid email address'),
+  body('city').notEmpty().withMessage('city is required'),
+  body('country').notEmpty().withMessage('Country is required'),
+  body('postalCode').notEmpty().withMessage('Postal code is required'),
 ];
 
 const bannerValidationRules = [

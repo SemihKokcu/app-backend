@@ -26,7 +26,7 @@ const aboutUsSchema = new Schema(
       required: true,
     },
     postalCode: {
-      type: String,
+      type: Number,
       required: true,
     },
     phoneNumber: {
