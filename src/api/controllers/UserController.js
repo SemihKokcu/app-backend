@@ -13,7 +13,7 @@ const userController = {
   update: async (req, res,next) => {
     try {
       const userId = req.params.id;
-      const updatedUser = await userService.update(userId, req.body);
+      const updatedUser = await userService.update(userId, req.body,req.file);
       res.json(updatedUser);
     } catch (error) {
       next(error)

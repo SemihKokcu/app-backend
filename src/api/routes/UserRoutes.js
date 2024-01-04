@@ -4,8 +4,6 @@ const multer = require('multer');
 const userController = require('../controllers/UserController'); 
 const { fileFilter, fileStorage } = require('../../utils/multer/imageSettings');
 const {userValidationRules}  = require('./validators/validationRules');
-
-
 const validate  = require('../../middleware/ValidatorMiddleWare');
 router.post(
   '/add',

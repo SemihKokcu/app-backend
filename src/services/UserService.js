@@ -14,14 +14,14 @@ const UserService = {
     }
   },
 
-  update: async (userId, data) => {
+  update: async (userId, data,file) => {
     try {
       const user = await User.findById(userId);
       if (!user) {
         throw new Error('User not found');
       }
 
-      const newImageUrl = data.file?.filename;
+      const newImageUrl = file?.filename;
       if (newImageUrl) {
         deleteImage(user.profileImage);
         user.profileImage = newImageUrl;
@@ -82,9 +82,12 @@ const UserService = {
       const startIndex = (page - 1) * limit;
       const endIndex = page * limit;
 
-      const [users, totalCount] = await Promise.all([
+      const [users, totalCount,emailVerifiedCount,phoneVerifiedCount,twoFactorCount] = await Promise.all([
         User.find().limit(parseInt(limit)).skip(startIndex).populate({ path: 'roles', model: Role }),
         User.countDocuments(),
+        User.countDocuments({emailVerified : true}),
+        User.countDocuments({phoneVerified : true}),
+        User.countDocuments({twoFactor : true}),
       ]);
 
       const results = {
@@ -93,6 +96,9 @@ const UserService = {
           totalCount,
           currentPage: parseInt(page),
           totalPages: Math.ceil(totalCount / limit),
+          emailVerifiedCount,
+          phoneVerifiedCount,
+          twoFactorCount,
         },
       };
       return results;
