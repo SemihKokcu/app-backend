@@ -1,4 +1,5 @@
 const Address = require('../models/Address');
+const User = require('../models/User');
 
 const addressService = {
   addAddress: async (data) => {
@@ -14,8 +15,9 @@ const addressService = {
         country,
         postalCode,
       });
-
+      
       const savedAddress = await newAddress.save();
+      await User.findByIdAndUpdate(savedAddress.userId,{address:savedAddress._id})
       return savedAddress;
     } catch (error) {
       throw error;

@@ -14,7 +14,7 @@ router.use( multer({ storage: fileStorage, fileFilter: fileFilter }).array("imag
 
 router.post(
   "/add",
-  // authMiddleware([`${create_product}`]),
+  authMiddleware([`${create_product}`]),
   productController.createProduct
 );
 
